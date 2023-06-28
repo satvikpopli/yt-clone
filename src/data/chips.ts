@@ -1,0 +1,20 @@
+export const chipsMenuBtns = [
+    'All',
+    'Shorts',
+    'Unwatched',
+    'Watched',
+    'For You',
+    'Recently Uploaded',
+    'Live',
+    'Albums',
+    'Crime',
+    'Comedy',
+    'Drama',
+    'Action',
+    'Horror',
+    'Thriller',
+    'Romance',
+    'Sci-Fi',
+    'Fantasy',
+    'Documentary'
+]

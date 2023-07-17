@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 
-export default function SearchInput() {
+export default function SearchInput({value, onChange, placeholder}: {value: string, onChange: (e: React.ChangeEvent<HTMLInputElement>) => void, placeholder: string}) {
   return (
-    <StyledInput type="text" placeholder='Search' />
+    <StyledInput type="text" value={value} onChange={onChange} placeholder={placeholder} />
   )
 }
 

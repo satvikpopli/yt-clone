@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Navbar from '../UI/organisms/Navbar'
-import Sidebar from '../UI/organisms/Sidebar'
 
 interface Props {
     children?: React.ReactNode
@@ -12,7 +11,6 @@ export default function GlobalTemplate({ children } : Props) {
         <StyledGlobalTemplate>
             <Navbar />
             <StyledTemplate>
-                <Sidebar />
                 {children}
             </StyledTemplate>
         </StyledGlobalTemplate>
@@ -20,9 +18,6 @@ export default function GlobalTemplate({ children } : Props) {
 }
 
 const StyledGlobalTemplate = styled.div`
-    /* position: fixed; */
-    /* top: 0; */
-    /* left: 0; */
     width: 100%;
 `
 

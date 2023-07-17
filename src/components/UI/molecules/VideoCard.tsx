@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import viewsFormatter from '../../../utils/viewsFormatter'
 
 interface Props {
   title: string,
@@ -10,31 +11,14 @@ interface Props {
   timestamp: string,
   duration: string
   avatar: string,
-  videoURL: string
+  videoURL: string,
+  description?: string
 }
 
-const viewsFormatter = (views: number) => {
-  if (views >= 1000000) {
-    // hide the decimal if it's 0
-    if (views % 1000000 === 0) {
-      return `${(views / 1000000).toFixed(0)}M`
-    }
-    return `${(views / 1000000).toFixed(1)}M`
-  }
-  if (views >= 1000) {
-    // hide the decimal if it's 0
-    if (views % 1000 === 0) {
-      return `${(views / 1000).toFixed(0)}K`
-    }
-    return `${(views / 1000).toFixed(1)}K`
-  }
-  return views
-}
-
-export default function VideoCard({ title, thumbnail, channel, views, timestamp, duration, avatar, videoURL }: Props) {
+export default function VideoCard({ title, thumbnail, channel, views, timestamp, duration, avatar, videoURL, description }: Props) {
   return (
     <StyledCard>
-      <StyledLink to={`https://youtube.com/watch?v=${videoURL.split('v=')[1]}`}>
+      <StyledLink to={`/watch/${videoURL.split('v=')[1]}`}>
         <Thumbnail src={thumbnail} alt={title} />
         <Details>
           <h3>{title}</h3>

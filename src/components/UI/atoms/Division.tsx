@@ -8,6 +8,6 @@ export default function Division() {
 }
 
 const StyledHr = styled.hr`
-    border: 0.5px solid ${({ theme }) => theme.lightHover};
-    margin: 1rem;
+  border: 0.5px solid ${({ theme }) => theme.lightHover};
+  margin: 1rem;
 `

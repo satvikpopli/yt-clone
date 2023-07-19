@@ -3,36 +3,24 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import viewsFormatter from '../../../utils/viewsFormatter'
 import durationFormatter from '../../../utils/durationFormatter'
+import IVideo from '../../../interfaces/video'
 
-
-interface Props {
-    title: string,
-    thumbnail: string,
-    channel: string,
-    views: number,
-    timestamp: string,
-    duration: string
-    avatar: string,
-    videoURL: string,
-    description?: string,
-}
-
-export default function SearchCard({ title, thumbnail, channel, views, timestamp, duration, avatar, videoURL, description }: Props) {
+export default function SearchCard(video : IVideo) {
     return (
         <StyledCard>
-            <StyledLink to={`https://youtube.com/watch?v=${videoURL.split('v=')[1]}`}>
+        <StyledLink to={`/watch?v=${video.videoURL.split('v=')[1]}`}>
                 <ThumbnailContainer>
-                    <Thumbnail src={thumbnail} alt={title} />
-                    <Duration>{durationFormatter(duration)}</Duration>
+                    <Thumbnail src={video.thumbnail} alt={video.title} />
+                    <Duration>{durationFormatter(video.duration)}</Duration>
                 </ThumbnailContainer>
                 <Details>
-                    <h3>{title}</h3>
-                    <p>{viewsFormatter(views)} views • {timestamp}</p>
+                    <h3>{video.title}</h3>
+                    <p>{viewsFormatter(video.views)} views • {video.timestamp}</p>
                     <MoreInfo>
-                        <Avatar src={avatar} alt={channel} />
-                        <Channel>{channel}</Channel>
+                        <Avatar src={video.avatar} alt={video.channel} />
+                        <Channel>{video.channel}</Channel>
                     </MoreInfo>
-                    <Description>{description?.substring(0, 200)}...</Description>
+                    <Description>{video.description?.substring(0, 200)}...</Description>
                 </Details>
             </StyledLink>
         </StyledCard>

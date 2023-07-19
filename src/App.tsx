@@ -19,12 +19,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/watch/:id",
+    path: "/watch",
     element: <Watch />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/results/:id",
+    path: "/results",
     element: <Search />,
     errorElement: <ErrorPage />,
   },

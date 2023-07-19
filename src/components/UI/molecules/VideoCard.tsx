@@ -2,31 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import viewsFormatter from '../../../utils/viewsFormatter'
+import IVideo from '../../../interfaces/video'
 
-interface Props {
-  title: string,
-  thumbnail: string,
-  channel: string,
-  views: number,
-  timestamp: string,
-  duration: string
-  avatar: string,
-  videoURL: string,
-  description?: string
-}
-
-export default function VideoCard({ title, thumbnail, channel, views, timestamp, duration, avatar, videoURL, description }: Props) {
+export default function VideoCard(video: IVideo) {
   return (
     <StyledCard>
-      <StyledLink to={`/watch/${videoURL.split('v=')[1]}`}>
-        <Thumbnail src={thumbnail} alt={title} />
+      <StyledLink to={`/watch?v=${video.videoURL.split('v=')[1]}`}>
+        <Thumbnail src={video.thumbnail} alt={video.title} />
         <Details>
-          <h3>{title}</h3>
+          <h3>{video.title}</h3>
           <MoreInfo>
-            <Avatar src={avatar} alt={channel} />
+            <Avatar src={video.avatar} alt={video.channel} />
             <div>
-              <p>{channel}</p>
-              <p>{viewsFormatter(views)} views • {timestamp}</p>
+              <p>{video.channel}</p>
+              <p>{viewsFormatter(video.views)} views • {video.timestamp}</p>
             </div>
           </MoreInfo>
         </Details>

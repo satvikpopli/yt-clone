@@ -7,29 +7,17 @@ import InteractionBtn from '../atoms/InteractionBtn'
 import { PiShareFatBold } from 'react-icons/pi'
 import { FiDownload, FiMoreHorizontal } from 'react-icons/fi'
 import { BiLike, BiDislike } from 'react-icons/bi'
+import IVideo from '../../../interfaces/video'
 
-
-interface Props {
-  title: string,
-  thumbnail: string,
-  channel: string,
-  views: number,
-  timestamp: string,
-  duration: string
-  avatar: string,
-  videoURL: string,
-  description?: string
-}
-
-export default function VideoPlayerInfo({ title, thumbnail, channel, views, timestamp, duration, avatar, videoURL }: Props) {
+export default function VideoPlayerInfo(video : IVideo) {
   return (
     <StyledInfo>
-      <VideoTitle>{title}</VideoTitle>
+      <VideoTitle>{video.title}</VideoTitle>
       <VideoInfo>
         <ChannelInfo>
-          <Avatar src={avatar} alt={channel} />
+          <Avatar src={video.avatar} alt={video.channel} />
           <ChannelDetails>
-            <ChannelName>{channel}</ChannelName>
+            <ChannelName>{video.channel}</ChannelName>
             <ChannelSubscribers>100k subscribers</ChannelSubscribers>
           </ChannelDetails>
           <InteractionBtn color='dark' text='Subscribe' />
@@ -44,7 +32,7 @@ export default function VideoPlayerInfo({ title, thumbnail, channel, views, time
           <InteractionBtn color='light' text='' logo={<FiMoreHorizontal />} />
         </Interactions>
       </VideoInfo>
-      <Description views={viewsFormatter(views)} timestamp={timestamp} description='Lorem' />
+      <Description views={viewsFormatter(video.views)} timestamp={video.timestamp} description='Lorem' />
     </StyledInfo>
   )
 }

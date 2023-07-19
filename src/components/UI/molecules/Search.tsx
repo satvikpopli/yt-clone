@@ -7,19 +7,16 @@ import styled from 'styled-components'
 import { MdOutlineMic } from 'react-icons/md'
 
 export default function Search() {
-  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('')
-  const onchangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.currentTarget.value);
-  }
+  const navigate = useNavigate();
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(!searchQuery) return;
-    navigate(`/results/${searchQuery}`);
+    if (!searchQuery) return;
+    navigate(`/results?q=${searchQuery}`);
   }
   return (
     <StyledForm onSubmit={submit}>
-      <SearchInput value={searchQuery} onChange={onchangeHandler} placeholder='Search' />
+      <SearchInput value={searchQuery} onChange={(e) => setSearchQuery(e.currentTarget.value)} placeholder='Search' />
       <SearchBtn />
       <NavbarBtn icon={<MdOutlineMic />} />
     </StyledForm>
